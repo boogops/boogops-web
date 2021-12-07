@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "name": "boogops-web",
+  "workspaces": [
+    "src/Boogops.Web/ClientApp"
+  ]
+}
