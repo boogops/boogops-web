@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{B5A3110B-EDB2-4491-A7C1-592D1D1A48AA}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		package.json = package.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boogops.Web", "src\Boogops.Web\Boogops.Web.csproj", "{0A54B333-C9A0-417F-9C5A-D6FCD0477011}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A54B333-C9A0-417F-9C5A-D6FCD0477011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A54B333-C9A0-417F-9C5A-D6FCD0477011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A54B333-C9A0-417F-9C5A-D6FCD0477011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A54B333-C9A0-417F-9C5A-D6FCD0477011}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
