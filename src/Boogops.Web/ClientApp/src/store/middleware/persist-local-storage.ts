@@ -1,4 +1,5 @@
 import { Middleware } from "redux";
+
 import { StoreState } from "../index";
 
 const loadState = (): StoreState => {

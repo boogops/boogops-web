@@ -1,4 +1,4 @@
-import { ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
+import { ListItem, ListItemIcon, ListItemText } from "@mui/material";
 import React, { FC } from "react";
 import { Link, LinkProps } from "react-router-dom";
 
@@ -16,8 +16,7 @@ const RouterListItem: FC<Props> = (props: Props) => {
   const forwardRef = React.forwardRef<
     HTMLAnchorElement,
     Omit<LinkProps, "innerRef" | "to">
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  >((props, ref) => <Link innerRef={ref as any} to={to} {...props} />);
+  >((props, ref) => <Link ref={ref as any} to={to} {...props} />);
   return (
     <ListItem
       button

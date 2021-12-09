@@ -6,6 +6,7 @@ import {
   Store,
 } from "redux";
 import thunk from "redux-thunk";
+
 import { layoutReducer } from "./layout";
 import {
   LayoutState,
@@ -29,7 +30,7 @@ export default function (): Store<
   const retval = createStore(
     rootReducer,
     persistedState,
-    applyMiddleware(persistLocalStorage, thunk),
+    applyMiddleware(persistLocalStorage, thunk)
   );
   return retval;
 }

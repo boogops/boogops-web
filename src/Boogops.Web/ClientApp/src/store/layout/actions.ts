@@ -1,4 +1,5 @@
 import { Dispatch } from "redux";
+
 import { SET_DRAWER_OPEN, SET_LOADING, SET_SELECTED_ROUTE } from "./types";
 
 export function setDrawerOpen(drawerOpen: boolean) {

@@ -1,15 +1,15 @@
-import { createBrowserHistory } from "history";
 import React, { FC } from "react";
-import { Router } from "react-router";
-import Routes from "./routes";
+import { Route, Routes } from "react-router-dom";
 
-const history = createBrowserHistory();
+import { DashboardView, UserLayout } from "./components";
 
 const App: FC = () => {
   return (
-    <Router history={history}>
-      <Routes />
-    </Router>
+    <Routes>
+      <Route path="/" element={<UserLayout />}>
+        <Route index element={<DashboardView />} />
+      </Route>
+    </Routes>
   );
 };
 

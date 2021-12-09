@@ -4,10 +4,11 @@ import {
   makeStyles,
   Theme,
   withStyles,
-} from "@material-ui/core";
-import { KeyboardArrowUp } from "@material-ui/icons";
+} from "@mui/material";
+import { KeyboardArrowUp } from "@mui/icons-material";
 import React, { FC } from "react";
 import { useSelector } from "react-redux";
+
 import { StoreState } from "../../../store";
 
 export const WhiteCircularProgress = withStyles((theme) => ({
@@ -50,7 +51,7 @@ const ContentSection: FC<Props> = (props: Props) => {
   };
 
   return (
-    <React.Fragment>
+    <>
       <div className={classes.content}>
         <div id="top-anchor" className={classes.drawerHeader} />
         {children}
@@ -60,7 +61,7 @@ const ContentSection: FC<Props> = (props: Props) => {
           {loading ? <WhiteCircularProgress /> : <KeyboardArrowUp />}
         </Fab>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

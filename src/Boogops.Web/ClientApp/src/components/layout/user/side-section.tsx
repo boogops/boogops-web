@@ -6,9 +6,10 @@ import {
   ListSubheader,
   makeStyles,
   Theme,
-} from "@material-ui/core";
-import { Dashboard } from "@material-ui/icons";
+} from "@mui/material";
+import { Dashboard } from "@mui/icons-material";
 import React, { FC } from "react";
+
 import RouterListItem from "../router-list-item";
 
 const useStyles = makeStyles((theme: Theme) => {
@@ -45,7 +46,7 @@ const SideSection: FC<Props> = (props: Props) => {
   const { drawerOpen, onDrawerToggle, selectedRoute, onRouteSelected } = props;
 
   const drawer = (
-    <React.Fragment>
+    <>
       <div className={classes.drawerHeader}>
         <div className={classes.title}>EqScan</div>
       </div>
@@ -60,11 +61,11 @@ const SideSection: FC<Props> = (props: Props) => {
           onClick={() => onRouteSelected("/dashboard")}
         />
       </List>
-    </React.Fragment>
+    </>
   );
 
   return (
-    <React.Fragment>
+    <>
       <Hidden xsDown>
         <Drawer
           className={classes.drawer}
@@ -91,7 +92,7 @@ const SideSection: FC<Props> = (props: Props) => {
           {drawer}
         </Drawer>
       </Hidden>
-    </React.Fragment>
+    </>
   );
 };
 

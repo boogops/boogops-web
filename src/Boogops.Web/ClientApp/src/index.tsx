@@ -1,22 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { Provider } from "react-redux";
+
 import App from "./app";
 import getRootStore from "./store";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { Provider } from "react-redux";
 import theme from "./theme";
-import { ThemeProvider } from "@material-ui/styles";
 
 export const store = getRootStore();
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </ThemeProvider>
+    </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById("root"),
+  document.getElementById("root")
 );

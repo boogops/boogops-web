@@ -8,8 +8,8 @@ import {
   Theme,
   Toolbar,
   Typography,
-} from "@material-ui/core";
-import { AccountCircle, Menu as MenuIcon } from "@material-ui/icons";
+} from "@mui/material";
+import { AccountCircle, Menu as MenuIcon } from "@mui/icons-material";
 import React, { FC, useState } from "react";
 
 const useStyles = makeStyles((theme: Theme) => {
@@ -34,17 +34,16 @@ const useStyles = makeStyles((theme: Theme) => {
 });
 
 interface Props {
-  title: string;
   onDrawerToggle: () => void;
 }
 
 const TopSection: FC<Props> = (props: Props) => {
   const classes = useStyles();
-  const { title, onDrawerToggle } = props;
+  const { onDrawerToggle } = props;
 
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const handleOpenMenu = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ): void => {
     setAnchorEl(event.currentTarget);
   };
@@ -63,9 +62,7 @@ const TopSection: FC<Props> = (props: Props) => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" className={classes.title}>
-          {title}
-        </Typography>
+        <Typography variant="h6" className={classes.title} title="Boogops" />
         <IconButton color="inherit" onClick={handleOpenMenu}>
           <AccountCircle />
         </IconButton>
@@ -76,9 +73,12 @@ const TopSection: FC<Props> = (props: Props) => {
           onClose={handleCloseMenu}
         >
           <MenuItem>
-            <Link href="/user/logout" underline="none" color="inherit">
-              Logout
-            </Link>
+            <Link
+              href="/user/logout"
+              underline="none"
+              color="inherit"
+              title="Logout"
+            />
           </MenuItem>
         </Menu>
       </Toolbar>

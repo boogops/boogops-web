@@ -1,12 +1,14 @@
-import { makeStyles } from "@material-ui/core";
-import React, { FC, PropsWithChildren, useEffect } from "react";
+import { makeStyles } from "@mui/material";
+import React, { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, Routes, Route, Outlet, Link } from "react-router-dom";
+
+import { StoreState } from "../../../store";
+import { setDrawerOpen, setSelectedRoute } from "../../../store/layout";
+
 import ContentSection from "./content-section";
 import SideSection from "./side-section";
 import TopSection from "./top-section";
-import { StoreState } from "../../../store";
-import { setDrawerOpen, setSelectedRoute } from "../../../store/layout";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -14,20 +16,15 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-type Props = PropsWithChildren<{
-  title: string;
-}>;
-
-const UserLayout: FC<Props> = (props: Props) => {
+const UserLayout: FC = () => {
   const classes = useStyles();
-  const { title, children } = props;
   const location = useLocation();
 
   const drawerOpen = useSelector(
-    (state: StoreState) => state.layout.drawerOpen,
+    (state: StoreState) => state.layout.drawerOpen
   );
   const selectedRoute = useSelector(
-    (state: StoreState) => state.layout.selectedRoute,
+    (state: StoreState) => state.layout.selectedRoute
   );
 
   const dispatch = useDispatch();
@@ -51,8 +48,10 @@ const UserLayout: FC<Props> = (props: Props) => {
         selectedRoute={selectedRoute}
         onRouteSelected={handleRouteSelection}
       />
-      <TopSection title={title} onDrawerToggle={handleDrawerToggle} />
-      <ContentSection>{children}</ContentSection>
+      <TopSection onDrawerToggle={handleDrawerToggle} />
+      <ContentSection>
+        <Outlet />
+      </ContentSection>
     </div>
   );
 };
