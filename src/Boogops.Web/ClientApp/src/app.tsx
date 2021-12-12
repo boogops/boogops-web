@@ -1,16 +1,17 @@
-import React, { FC } from "react";
-import { Route, Routes } from "react-router-dom";
+import React from "react";
 
-import { DashboardView, UserLayout } from "./components";
+import ThemeConfig from "./theme";
+import { ScrollToTop } from "./components";
+import GlobalStyles from "./theme/global-styles";
 
-const App: FC = () => {
+function App() {
   return (
-    <Routes>
-      <Route path="/" element={<UserLayout />}>
-        <Route index element={<DashboardView />} />
-      </Route>
-    </Routes>
+    <ThemeConfig>
+      <ScrollToTop />
+      <GlobalStyles />
+      <>Hi Heath</>
+    </ThemeConfig>
   );
-};
+}
 
 export default App;

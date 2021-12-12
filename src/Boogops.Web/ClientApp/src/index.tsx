@@ -1,25 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { Provider } from "react-redux";
+import { HelmetProvider } from "react-helmet-async";
 
 import App from "./app";
-import getRootStore from "./store";
-import theme from "./theme";
-
-export const store = getRootStore();
+import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <HelmetProvider>
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </ThemeProvider>
+      <App />
     </BrowserRouter>
-  </React.StrictMode>,
+  </HelmetProvider>,
   document.getElementById("root")
 );
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();

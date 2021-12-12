@@ -1,2 +1,1 @@
-export { UserLayout } from "./layout";
-export { DashboardView } from "./views";
+export { default as ScrollToTop } from "./ScrollToTop";
