@@ -1,8 +1,5 @@
-import {
-  alpha,
-  PaletteOptions,
-  SimplePaletteColorOptions,
-} from "@mui/material";
+import { alpha, PaletteOptions } from "@mui/material";
+import { SimplePaletteColorOptions } from "@mui/material/styles";
 
 const GREY = {
   0: "#FFFFFF",
@@ -26,44 +23,55 @@ const GREY = {
 };
 
 const PRIMARY: SimplePaletteColorOptions = {
+  lighter: "#C8FACD",
   light: "#5BE584",
   main: "#00AB55",
   dark: "#007B55",
+  darker: "#005249",
   contrastText: "#fff",
 };
 const SECONDARY: SimplePaletteColorOptions = {
+  lighter: "#D6E4FF",
   light: "#84A9FF",
   main: "#3366FF",
   dark: "#1939B7",
+  darker: "#091A7A",
   contrastText: "#fff",
 };
 const INFO: SimplePaletteColorOptions = {
+  lighter: "#D0F2FF",
   light: "#74CAFF",
   main: "#1890FF",
   dark: "#0C53B7",
+  darker: "#04297A",
   contrastText: "#fff",
 };
 const SUCCESS: SimplePaletteColorOptions = {
+  lighter: "#E9FCD4",
   light: "#AAF27F",
   main: "#54D62C",
   dark: "#229A16",
+  darker: "#08660D",
   contrastText: GREY[800],
 };
 const WARNING: SimplePaletteColorOptions = {
+  lighter: "#FFF7CD",
   light: "#FFE16A",
   main: "#FFC107",
   dark: "#B78103",
+  darker: "#7A4F01",
   contrastText: GREY[800],
 };
 const ERROR: SimplePaletteColorOptions = {
+  lighter: "#FFE7D9",
   light: "#FFA48D",
   main: "#FF4842",
   dark: "#B72136",
+  darker: "#7A0C2E",
   contrastText: "#fff",
 };
 
 const palette: PaletteOptions = {
-  mode: "dark",
   common: { black: "#000", white: "#fff" },
   primary: PRIMARY,
   secondary: SECONDARY,

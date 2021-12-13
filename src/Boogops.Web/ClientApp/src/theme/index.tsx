@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { CssBaseline } from "@mui/material";
+import { CssBaseline, ThemeOptions } from "@mui/material";
 import {
   ThemeProvider,
   createTheme,
@@ -16,7 +16,7 @@ import shadows, { customShadows } from "./shadows";
 type Props = React.PropsWithChildren<unknown>;
 
 const ThemeConfig = ({ children }: Props) => {
-  const themeOptions = useMemo(
+  const themeOptions: ThemeOptions = useMemo(
     () => ({
       palette,
       shape,

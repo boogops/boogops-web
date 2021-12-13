@@ -8,7 +8,7 @@ import Button from "./button";
 import Tooltip from "./tooltip";
 import Backdrop from "./backdrop";
 import Typography from "./typography";
-import IconButton from "./iconButton";
+import IconButton from "./icon-button";
 import Autocomplete from "./autocomplete";
 
 export default function ComponentsOverrides(theme: any) {
