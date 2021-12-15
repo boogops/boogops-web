@@ -1,4 +1,4 @@
-import { alpha, SimplePaletteColorOptions } from "@mui/material/styles";
+import { alpha, SimplePaletteColorOptions } from "@mui/material";
 import { Shadows } from "@mui/material/styles/shadows";
 
 import palette from "./palette";
@@ -61,7 +61,7 @@ const createCustomShadow = (color: string) => {
   };
 };
 
-const LIGHT_MODE = palette.grey ? String(palette.grey[500]) : "";
+const LIGHT_MODE = String(palette.grey?.[500]);
 export const customShadows = createCustomShadow(LIGHT_MODE);
 const shadows = createShadow(LIGHT_MODE);
 

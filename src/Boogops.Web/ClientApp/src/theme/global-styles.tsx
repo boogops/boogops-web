@@ -53,9 +53,7 @@ const GlobalStyles = () => {
             color: theme.palette.text.disabled,
           },
         },
-
         img: { display: "block", maxWidth: "100%" },
-
         // Lazy Load Img
         ".blur-up": {
           WebkitFilter: "blur(5px)",

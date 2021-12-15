@@ -1,10 +1,11 @@
 import React, { useMemo } from "react";
-import { CssBaseline, ThemeOptions } from "@mui/material";
 import {
+  CssBaseline,
+  ThemeOptions,
   ThemeProvider,
   createTheme,
   StyledEngineProvider,
-} from "@mui/material/styles";
+} from "@mui/material";
 
 import shape from "./shape";
 import palette from "./palette";

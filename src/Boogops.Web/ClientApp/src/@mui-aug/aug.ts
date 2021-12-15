@@ -1,4 +1,10 @@
-declare module "@mui/material/styles" {
+import { customShadows } from "../theme/shadows";
+import { GREY } from "../theme/palette";
+
+declare module "@mui/material" {
+  interface Theme {
+    customShadows: typeof customShadows;
+  }
   interface PaletteColor {
     lighter?: string;
     darker?: string;

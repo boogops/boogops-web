@@ -1,11 +1,16 @@
 import React, { PropsWithChildren, useEffect } from "react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
-import { styled } from "@mui/material/styles";
-import { Box, Link, Drawer, Typography, Avatar, Hidden } from "@mui/material";
+import {
+  styled,
+  Box,
+  Link,
+  Drawer,
+  Typography,
+  Avatar,
+  Hidden,
+} from "@mui/material";
 
-import Logo from "../../components/Logo";
-import Scrollbar from "../../components/Scrollbar";
-import NavSection from "../../components/NavSection";
+import { NavSection, Scrollbar } from "../../components";
 
 import sidebarConfig from "./sidebar-config";
 
@@ -53,26 +58,28 @@ const DashboardSidebar = ({ isOpenSidebar, onCloseSidebar }: Props) => {
     >
       <Box sx={{ px: 2.5, py: 3 }}>
         <Box component={RouterLink} to="/" sx={{ display: "inline-flex" }}>
-          <Logo />
+          {/* Logo goes here.*/}
         </Box>
       </Box>
-
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none" component={RouterLink} to="#">
           <AccountStyle>
-            <Avatar src={account.photoURL} alt="photoURL" />
+            <Avatar src="" alt="photoURL" />
             <Box sx={{ ml: 2 }}>
-              <Typography variant="subtitle2" sx={{ color: "text.primary" }}>
-                {account.displayName}
-              </Typography>
-              <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                {account.role}
-              </Typography>
+              <Typography
+                variant="subtitle2"
+                sx={{ color: "text.primary" }}
+                title="Heath Turnage"
+              />
+              <Typography
+                variant="body2"
+                sx={{ color: "text.secondary" }}
+                title="Primary Software Developer"
+              />
             </Box>
           </AccountStyle>
         </Link>
       </Box>
-
       <NavSection navConfig={sidebarConfig} />
     </Scrollbar>
   );
@@ -90,7 +97,6 @@ const DashboardSidebar = ({ isOpenSidebar, onCloseSidebar }: Props) => {
           {renderContent}
         </Drawer>
       </Hidden>
-
       <Hidden lgDown>
         <Drawer
           open
