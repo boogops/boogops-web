@@ -1,17 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 
-import ThemeConfig from "./theme";
-import { ScrollToTop } from "./components";
-import GlobalStyles from "./theme/global-styles";
+import BoogopsRoutes from "./routes";
 
-function App() {
-  return (
-    <ThemeConfig>
-      <ScrollToTop />
-      <GlobalStyles />
-      <>Hi Heath</>
-    </ThemeConfig>
-  );
-}
+const App: FC = () => {
+  return <BoogopsRoutes />;
+};
 
 export default App;
