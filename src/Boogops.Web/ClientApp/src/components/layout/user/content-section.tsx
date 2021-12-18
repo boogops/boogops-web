@@ -67,7 +67,9 @@ const ContentSection: FC<Props> = ({ children }: Props) => {
       </div>
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
       <div onClick={handleClick} className={classes.fab}>
-        <Fab color="primary">{fabContent}</Fab>
+        <Fab color="secondary" sx={{ boxShadow: 0 }}>
+          {fabContent}
+        </Fab>
       </div>
     </Root>
   );

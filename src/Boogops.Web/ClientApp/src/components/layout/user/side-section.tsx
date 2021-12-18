@@ -12,10 +12,10 @@ const classes = {
   drawerHeader: `${PREFIX}-drawerHeader`,
   title: `${PREFIX}-title`,
 };
-const Root = styled("div")(({ theme }) => {
+const DrawerStyled = styled(Drawer)(({ theme }) => {
   const drawerWidth = 240;
   return {
-    [`& .${classes.drawer}`]: {
+    [`.${classes.drawer}`]: {
       width: drawerWidth,
     },
     [`& .${classes.drawerPaper}`]: {
@@ -55,7 +55,6 @@ const SideSection: FC<Props> = ({
       <div className={classes.drawerHeader}>
         <div className={classes.title}>{title}</div>
       </div>
-      <Divider />
       <List>
         <ListSubheader>{subHeaderTitle}</ListSubheader>
         <RouterListItem
@@ -70,9 +69,9 @@ const SideSection: FC<Props> = ({
   );
 
   return (
-    <Root>
+    <>
       <Hidden smDown>
-        <Drawer
+        <DrawerStyled
           className={classes.drawer}
           variant="permanent"
           classes={{
@@ -81,10 +80,10 @@ const SideSection: FC<Props> = ({
           anchor="left"
         >
           {drawer}
-        </Drawer>
+        </DrawerStyled>
       </Hidden>
       <Hidden smUp>
-        <Drawer
+        <DrawerStyled
           className={classes.drawer}
           variant="temporary"
           classes={{
@@ -95,9 +94,9 @@ const SideSection: FC<Props> = ({
           onClose={onDrawerToggle}
         >
           {drawer}
-        </Drawer>
+        </DrawerStyled>
       </Hidden>
-    </Root>
+    </>
   );
 };
 

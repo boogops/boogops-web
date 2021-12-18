@@ -9,15 +9,9 @@ import ContentSection from "./content-section";
 import SideSection from "./side-section";
 import TopSection from "./top-section";
 
-const PREFIX = "UserLayout";
-const classes = {
-  root: `${PREFIX}-root`,
-};
-const Root = styled("div")(() => ({
-  [`&.${classes.root}`]: {
-    display: "flex",
-  },
-}));
+const Root = styled("div")({
+  display: "flex",
+});
 
 const UserLayout: FC = () => {
   const location = useLocation();
@@ -49,14 +43,14 @@ const UserLayout: FC = () => {
   );
 
   return (
-    <Root className={classes.root}>
+    <Root>
       <SideSection
         drawerOpen={drawerOpen}
         onDrawerToggle={handleDrawerToggle}
         selectedRoute={selectedRoute}
         onRouteSelected={handleRouteSelection}
       />
-      <TopSection title="Boogops" onDrawerToggle={handleDrawerToggle} />
+      <TopSection onDrawerToggle={handleDrawerToggle} />
       <ContentSection>
         <Outlet />
       </ContentSection>

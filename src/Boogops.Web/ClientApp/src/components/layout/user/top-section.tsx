@@ -1,10 +1,11 @@
 import {
+  alpha,
   AppBar,
+  Box,
   IconButton,
   Link,
   Menu,
   MenuItem,
-  Theme,
   Toolbar,
   Typography,
 } from "@mui/material";
@@ -23,6 +24,11 @@ const Root = styled("div")(({ theme }) => {
   const drawerWidth = 240;
   return {
     [`& .${classes.appBar}`]: {
+      boxShadow: "none",
+      backdropFilter: "blur(6px)",
+      // Fix on Mobile
+      WebkitBackdropFilter: "blur(6px)",
+      backgroundColor: alpha(theme.palette.background.default, 0.72),
       [theme.breakpoints.up("sm")]: {
         width: `calc(100% - ${drawerWidth}px)`,
         marginLeft: drawerWidth,
@@ -41,11 +47,10 @@ const Root = styled("div")(({ theme }) => {
 });
 
 interface Props {
-  title: string;
   onDrawerToggle: () => void;
 }
 
-const TopSection: FC<Props> = ({ title, onDrawerToggle }: Props) => {
+const TopSection: FC<Props> = ({ onDrawerToggle }: Props) => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const handleOpenMenu = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -56,23 +61,17 @@ const TopSection: FC<Props> = ({ title, onDrawerToggle }: Props) => {
     setAnchorEl(null);
   };
 
+  const logout = "Logout";
+
   return (
     <Root>
-      <AppBar position="fixed" elevation={1} className={classes.appBar}>
+      <AppBar elevation={1} className={classes.appBar}>
         <Toolbar>
-          <IconButton
-            color="inherit"
-            edge="start"
-            onClick={onDrawerToggle}
-            className={classes.menuButton}
-            size="large"
-          >
+          <IconButton className={classes.menuButton} onClick={onDrawerToggle}>
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            {title}
-          </Typography>
-          <IconButton color="inherit" onClick={handleOpenMenu} size="large">
+          <Box className={classes.title} />
+          <IconButton color="default" onClick={handleOpenMenu}>
             <AccountCircle />
           </IconButton>
           <Menu
@@ -82,12 +81,9 @@ const TopSection: FC<Props> = ({ title, onDrawerToggle }: Props) => {
             onClose={handleCloseMenu}
           >
             <MenuItem>
-              <Link
-                title="Logout"
-                href="/user/logout"
-                underline="none"
-                color="inherit"
-              />
+              <Link href="/user/logout" underline="none">
+                {logout}
+              </Link>
             </MenuItem>
           </Menu>
         </Toolbar>

@@ -6,7 +6,7 @@ const DashboardView: FC = () => {
   return (
     <Grid container>
       <Grid item xs={12}>
-        <span title={title} />
+        <span>{title}</span>
       </Grid>
     </Grid>
   );
