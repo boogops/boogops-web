@@ -1,18 +1,16 @@
-import { DashboardView } from "./components/views";
-import { Redirect, Route, Switch } from "react-router-dom";
 import React, { FC } from "react";
-import { Container, UserLayout } from "./components";
+import { Routes, Route } from "react-router-dom";
 
-const Routes: FC = () => {
+import { UserLayout, DashboardView } from "./components";
+
+const AppRoutes: FC = () => {
   return (
-    <Switch>
-      <Redirect exact from="/" to="/dashboard" />
-      <Route path="/dashboard">
-        <Container layout={UserLayout} page={DashboardView} title="Dashboard" />
+    <Routes>
+      <Route path="/" element={<UserLayout />}>
+        <Route path="dashboard" element={<DashboardView />} />
       </Route>
-      <Redirect to="/not-found" />
-    </Switch>
+    </Routes>
   );
 };
 
-export default Routes;
+export default AppRoutes;

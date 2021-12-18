@@ -1,32 +1,33 @@
-import {
-  Divider,
-  Drawer,
-  Hidden,
-  List,
-  ListSubheader,
-  makeStyles,
-  Theme,
-} from "@material-ui/core";
-import { Dashboard } from "@material-ui/icons";
 import React, { FC } from "react";
+import { Divider, Drawer, Hidden, List, ListSubheader } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { Dashboard } from "@mui/icons-material";
+
 import RouterListItem from "../router-list-item";
 
-const useStyles = makeStyles((theme: Theme) => {
+const PREFIX = "SideSection";
+const classes = {
+  drawer: `${PREFIX}-drawer`,
+  drawerPaper: `${PREFIX}-drawerPaper`,
+  drawerHeader: `${PREFIX}-drawerHeader`,
+  title: `${PREFIX}-title`,
+};
+const DrawerStyled = styled(Drawer)(({ theme }) => {
   const drawerWidth = 240;
   return {
-    drawer: {
+    [`.${classes.drawer}`]: {
       width: drawerWidth,
     },
-    drawerPaper: {
+    [`& .${classes.drawerPaper}`]: {
       width: drawerWidth,
     },
-    drawerHeader: {
+    [`& .${classes.drawerHeader}`]: {
       display: "flex",
       alignItems: "center",
       padding: theme.spacing(0, 1),
       ...theme.mixins.toolbar,
     },
-    title: {
+    [`& .${classes.title}`]: {
       flexGrow: 1,
       padding: theme.spacing(1, 0, 0, 1),
     },
@@ -40,33 +41,37 @@ interface Props {
   onRouteSelected: (route: string) => void;
 }
 
-const SideSection: FC<Props> = (props: Props) => {
-  const classes = useStyles();
-  const { drawerOpen, onDrawerToggle, selectedRoute, onRouteSelected } = props;
+const SideSection: FC<Props> = ({
+  drawerOpen,
+  onDrawerToggle,
+  selectedRoute,
+  onRouteSelected,
+}: Props) => {
+  const title = "Boogops";
+  const subHeaderTitle = "Main";
 
   const drawer = (
-    <React.Fragment>
+    <>
       <div className={classes.drawerHeader}>
-        <div className={classes.title}>EqScan</div>
+        <div className={classes.title}>{title}</div>
       </div>
-      <Divider />
       <List>
-        <ListSubheader>Main</ListSubheader>
+        <ListSubheader>{subHeaderTitle}</ListSubheader>
         <RouterListItem
           to="/dashboard"
-          primary="dashboard"
+          primary="Dashboard"
           icon={<Dashboard />}
           selected={selectedRoute.includes("/dashboard")}
           onClick={() => onRouteSelected("/dashboard")}
         />
       </List>
-    </React.Fragment>
+    </>
   );
 
   return (
-    <React.Fragment>
-      <Hidden xsDown>
-        <Drawer
+    <>
+      <Hidden smDown>
+        <DrawerStyled
           className={classes.drawer}
           variant="permanent"
           classes={{
@@ -75,10 +80,10 @@ const SideSection: FC<Props> = (props: Props) => {
           anchor="left"
         >
           {drawer}
-        </Drawer>
+        </DrawerStyled>
       </Hidden>
       <Hidden smUp>
-        <Drawer
+        <DrawerStyled
           className={classes.drawer}
           variant="temporary"
           classes={{
@@ -89,9 +94,9 @@ const SideSection: FC<Props> = (props: Props) => {
           onClose={onDrawerToggle}
         >
           {drawer}
-        </Drawer>
+        </DrawerStyled>
       </Hidden>
-    </React.Fragment>
+    </>
   );
 };
 
