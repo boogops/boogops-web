@@ -4,6 +4,7 @@ import {
   combineReducers,
   createStore,
   Store,
+  Middleware,
 } from "redux";
 import thunk from "redux-thunk";
 
@@ -14,18 +15,36 @@ import {
   SetOpenAction,
   SetSelectedRouteAction,
 } from "./layout/types";
-import { loadState, persistLocalStorage } from "./middleware";
+
+const loadState = (): StoreState => {
+  let retval;
+
+  const item = localStorage.getItem("state");
+  if (item !== null) {
+    retval = JSON.parse(item);
+  }
+
+  return retval;
+};
+
+const saveState = (state: StoreState) => {
+  const item = JSON.stringify(state);
+  localStorage.setItem("state", item);
+};
 
 const rootReducer = combineReducers({
   layout: layoutReducer,
 });
 
-export type StoreState = ReturnType<typeof rootReducer>;
+const persistLocalStorage: Middleware = (store) => (next) => (action) => {
+  next(action);
+  saveState(store.getState());
+};
 
-export default function (): Store<
+const store = (): Store<
   CombinedState<{ layout: LayoutState }>,
   SetOpenAction | SetSelectedRouteAction | SetLoadingAction
-> {
+> => {
   const persistedState: StoreState = loadState();
   const retval = createStore(
     rootReducer,
@@ -33,4 +52,8 @@ export default function (): Store<
     applyMiddleware(persistLocalStorage, thunk)
   );
   return retval;
-}
+};
+
+export { setDrawerOpen, setSelectedRoute, setLoading } from "./layout";
+export type StoreState = ReturnType<typeof rootReducer>;
+export default store;

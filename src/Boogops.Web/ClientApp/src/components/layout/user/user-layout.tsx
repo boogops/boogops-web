@@ -1,10 +1,9 @@
-import { styled } from "@mui/material/styles";
-import React, { FC, useEffect } from "react";
+import React, { FC, useCallback, useEffect } from "react";
+import { styled } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, Outlet } from "react-router-dom";
 
-import { StoreState } from "../../../store";
-import { setDrawerOpen, setSelectedRoute } from "../../../store/layout";
+import { StoreState, setDrawerOpen, setSelectedRoute } from "../../../store";
 
 import ContentSection from "./content-section";
 import SideSection from "./side-section";
@@ -36,12 +35,18 @@ const UserLayout: FC = () => {
     dispatch(setDrawerOpen(!drawerOpen));
   }
 
-  function handleRouteSelection(route: string) {
-    dispatch(setSelectedRoute(route));
-    dispatch(setDrawerOpen(false));
-  }
+  const handleRouteSelection = useCallback(
+    (route: string) => {
+      dispatch(setSelectedRoute(route));
+      dispatch(setDrawerOpen(false));
+    },
+    [dispatch]
+  );
 
-  useEffect(() => handleRouteSelection(location.pathname), [location.pathname]);
+  useEffect(
+    () => handleRouteSelection(location.pathname),
+    [handleRouteSelection, location.pathname]
+  );
 
   return (
     <Root className={classes.root}>

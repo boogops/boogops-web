@@ -19,10 +19,10 @@ const classes = {
   menuButton: `${PREFIX}-menuButton`,
 };
 
-const StyledAppBar = styled(AppBar)(({ theme }) => {
+const Root = styled("div")(({ theme }) => {
   const drawerWidth = 240;
   return {
-    [`&.${classes.appBar}`]: {
+    [`& .${classes.appBar}`]: {
       [theme.breakpoints.up("sm")]: {
         width: `calc(100% - ${drawerWidth}px)`,
         marginLeft: drawerWidth,
@@ -45,9 +45,7 @@ interface Props {
   onDrawerToggle: () => void;
 }
 
-const TopSection: FC<Props> = (props: Props) => {
-  const { title, onDrawerToggle } = props;
-
+const TopSection: FC<Props> = ({ title, onDrawerToggle }: Props) => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const handleOpenMenu = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -59,37 +57,42 @@ const TopSection: FC<Props> = (props: Props) => {
   };
 
   return (
-    <StyledAppBar position="fixed" elevation={1} className={classes.appBar}>
-      <Toolbar>
-        <IconButton
-          color="inherit"
-          edge="start"
-          onClick={onDrawerToggle}
-          className={classes.menuButton}
-          size="large"
-        >
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="h6" className={classes.title}>
-          {title}
-        </Typography>
-        <IconButton color="inherit" onClick={handleOpenMenu} size="large">
-          <AccountCircle />
-        </IconButton>
-        <Menu
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleCloseMenu}
-        >
-          <MenuItem>
-            <Link href="/user/logout" underline="none" color="inherit">
-              Logout
-            </Link>
-          </MenuItem>
-        </Menu>
-      </Toolbar>
-    </StyledAppBar>
+    <Root>
+      <AppBar position="fixed" elevation={1} className={classes.appBar}>
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            edge="start"
+            onClick={onDrawerToggle}
+            className={classes.menuButton}
+            size="large"
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            {title}
+          </Typography>
+          <IconButton color="inherit" onClick={handleOpenMenu} size="large">
+            <AccountCircle />
+          </IconButton>
+          <Menu
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleCloseMenu}
+          >
+            <MenuItem>
+              <Link
+                title="Logout"
+                href="/user/logout"
+                underline="none"
+                color="inherit"
+              />
+            </MenuItem>
+          </Menu>
+        </Toolbar>
+      </AppBar>
+    </Root>
   );
 };
 

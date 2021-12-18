@@ -10,8 +10,13 @@ interface Props {
   onClick: () => void;
 }
 
-const RouterListItem: FC<Props> = (props: Props) => {
-  const { to, primary, icon, selected, onClick } = props;
+const RouterListItem: FC<Props> = ({
+  to,
+  primary,
+  icon,
+  selected,
+  onClick,
+}: Props) => {
   // eslint-disable-next-line react/display-name
   const forwardRef = React.forwardRef<
     HTMLAnchorElement,

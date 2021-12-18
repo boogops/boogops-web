@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 
-import BoogopsRoutes from "./routes";
+import AppRoutes from "./routes";
 
 const App: FC = () => {
-  return <BoogopsRoutes />;
+  return <AppRoutes />;
 };
 
 export default App;

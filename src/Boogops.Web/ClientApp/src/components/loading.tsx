@@ -1,14 +1,11 @@
-import { CircularProgress, Grid } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { CircularProgress, Grid, styled } from "@mui/material";
 import React, { FC } from "react";
 
 const PREFIX = "Loading";
-
 const classes = {
   content: `${PREFIX}-content`,
 };
-
-const StyledGrid = styled(Grid)(() => ({
+const Root = styled("div")(() => ({
   [`&.${classes.content}`]: {
     minHeight: "50vh",
   },
@@ -16,16 +13,18 @@ const StyledGrid = styled(Grid)(() => ({
 
 const Loading: FC = () => {
   return (
-    <StyledGrid
-      container
-      justifyContent="center"
-      alignItems="center"
-      className={classes.content}
-    >
-      <Grid item>
-        <CircularProgress />
+    <Root>
+      <Grid
+        container
+        justifyContent="center"
+        alignItems="center"
+        className={classes.content}
+      >
+        <Grid item>
+          <CircularProgress />
+        </Grid>
       </Grid>
-    </StyledGrid>
+    </Root>
   );
 };
 

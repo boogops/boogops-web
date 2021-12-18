@@ -1,7 +1,7 @@
-import { CircularProgress, Fab, Theme } from "@mui/material";
+import React, { FC } from "react";
+import { CircularProgress, Fab } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { KeyboardArrowUp } from "@mui/icons-material";
-import React, { FC } from "react";
 import { useSelector } from "react-redux";
 
 import { StoreState } from "../../../store";
@@ -36,9 +36,7 @@ const WhiteCircularProgress = styled(CircularProgress)(({ theme }) => ({
 
 type Props = React.PropsWithChildren<unknown>;
 
-const ContentSection: FC<Props> = (props: Props) => {
-  const { children } = props;
-
+const ContentSection: FC<Props> = ({ children }: Props) => {
   const loading = useSelector((state: StoreState) => state.layout.loading);
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -51,24 +49,25 @@ const ContentSection: FC<Props> = (props: Props) => {
     }
   };
 
+  const fabContent = loading ? (
+    <WhiteCircularProgress
+      classes={{
+        colorPrimary: classes.colorPrimary,
+      }}
+    />
+  ) : (
+    <KeyboardArrowUp />
+  );
+
   return (
     <Root>
       <div className={classes.content}>
         <div id="top-anchor" className={classes.drawerHeader} />
         {children}
       </div>
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
       <div onClick={handleClick} className={classes.fab}>
-        <Fab color="primary">
-          {loading ? (
-            <WhiteCircularProgress
-              classes={{
-                colorPrimary: classes.colorPrimary,
-              }}
-            />
-          ) : (
-            <KeyboardArrowUp />
-          )}
-        </Fab>
+        <Fab color="primary">{fabContent}</Fab>
       </div>
     </Root>
   );

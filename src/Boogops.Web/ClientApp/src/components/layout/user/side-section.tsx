@@ -1,7 +1,7 @@
+import React, { FC } from "react";
 import { Divider, Drawer, Hidden, List, ListSubheader } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Dashboard } from "@mui/icons-material";
-import React, { FC } from "react";
 
 import RouterListItem from "../router-list-item";
 
@@ -12,7 +12,6 @@ const classes = {
   drawerHeader: `${PREFIX}-drawerHeader`,
   title: `${PREFIX}-title`,
 };
-
 const Root = styled("div")(({ theme }) => {
   const drawerWidth = 240;
   return {
@@ -42,20 +41,26 @@ interface Props {
   onRouteSelected: (route: string) => void;
 }
 
-const SideSection: FC<Props> = (props: Props) => {
-  const { drawerOpen, onDrawerToggle, selectedRoute, onRouteSelected } = props;
+const SideSection: FC<Props> = ({
+  drawerOpen,
+  onDrawerToggle,
+  selectedRoute,
+  onRouteSelected,
+}: Props) => {
+  const title = "Boogops";
+  const subHeaderTitle = "Main";
 
   const drawer = (
     <>
       <div className={classes.drawerHeader}>
-        <div className={classes.title}>boogops</div>
+        <div className={classes.title}>{title}</div>
       </div>
       <Divider />
       <List>
-        <ListSubheader>Main</ListSubheader>
+        <ListSubheader>{subHeaderTitle}</ListSubheader>
         <RouterListItem
           to="/dashboard"
-          primary="dashboard"
+          primary="Dashboard"
           icon={<Dashboard />}
           selected={selectedRoute.includes("/dashboard")}
           onClick={() => onRouteSelected("/dashboard")}
