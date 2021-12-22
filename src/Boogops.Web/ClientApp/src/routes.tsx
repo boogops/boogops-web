@@ -7,7 +7,7 @@ const AppRoutes: FC = () => {
   return (
     <Routes>
       <Route path="/" element={<UserLayout />}>
-        <Route path="dashboard" element={<DashboardView />} />
+        <Route index element={<DashboardView />} />
       </Route>
     </Routes>
   );
