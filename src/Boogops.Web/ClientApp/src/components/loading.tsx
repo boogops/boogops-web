@@ -1,26 +1,30 @@
-import { CircularProgress, Grid, makeStyles } from "@material-ui/core";
+import { CircularProgress, Grid, styled } from "@mui/material";
 import React, { FC } from "react";
 
-const useStyles = makeStyles(() => ({
-  content: {
+const PREFIX = "Loading";
+const classes = {
+  content: `${PREFIX}-content`,
+};
+const Root = styled("div")(() => ({
+  [`&.${classes.content}`]: {
     minHeight: "50vh",
   },
 }));
 
 const Loading: FC = () => {
-  const classes = useStyles();
-
   return (
-    <Grid
-      container
-      justify="center"
-      alignItems="center"
-      className={classes.content}
-    >
-      <Grid item>
-        <CircularProgress />
+    <Root>
+      <Grid
+        container
+        justifyContent="center"
+        alignItems="center"
+        className={classes.content}
+      >
+        <Grid item>
+          <CircularProgress />
+        </Grid>
       </Grid>
-    </Grid>
+    </Root>
   );
 };
 

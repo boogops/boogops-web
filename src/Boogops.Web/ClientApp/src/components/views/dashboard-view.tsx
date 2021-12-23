@@ -1,11 +1,12 @@
-import { Grid } from "@material-ui/core";
+import { Grid } from "@mui/material";
 import React, { FC } from "react";
 
 const DashboardView: FC = () => {
+  const title = "Hello, Heath!";
   return (
     <Grid container>
       <Grid item xs={12}>
-        <span>Hello, Tom!</span>
+        <span>{title}</span>
       </Grid>
     </Grid>
   );

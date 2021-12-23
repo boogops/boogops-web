@@ -14,7 +14,7 @@ const initialState: LayoutState = {
 
 export function layoutReducer(
   state = initialState,
-  action: LayoutActionType,
+  action: LayoutActionType
 ): LayoutState {
   switch (action.type) {
     case SET_DRAWER_OPEN:

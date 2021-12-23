@@ -1,33 +1,26 @@
-import { makeStyles } from "@material-ui/core";
-import React, { FC, PropsWithChildren, useEffect } from "react";
+import React, { FC, useCallback, useEffect } from "react";
+import { styled } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, Outlet } from "react-router-dom";
+
+import { StoreState, setDrawerOpen, setSelectedRoute } from "../../../store";
+
 import ContentSection from "./content-section";
 import SideSection from "./side-section";
 import TopSection from "./top-section";
-import { StoreState } from "../../../store";
-import { setDrawerOpen, setSelectedRoute } from "../../../store/layout";
 
-const useStyles = makeStyles(() => ({
-  root: {
-    display: "flex",
-  },
-}));
+const Root = styled("div")({
+  display: "flex",
+});
 
-type Props = PropsWithChildren<{
-  title: string;
-}>;
-
-const UserLayout: FC<Props> = (props: Props) => {
-  const classes = useStyles();
-  const { title, children } = props;
+const UserLayout: FC = () => {
   const location = useLocation();
 
   const drawerOpen = useSelector(
-    (state: StoreState) => state.layout.drawerOpen,
+    (state: StoreState) => state.layout.drawerOpen
   );
   const selectedRoute = useSelector(
-    (state: StoreState) => state.layout.selectedRoute,
+    (state: StoreState) => state.layout.selectedRoute
   );
 
   const dispatch = useDispatch();
@@ -36,24 +29,32 @@ const UserLayout: FC<Props> = (props: Props) => {
     dispatch(setDrawerOpen(!drawerOpen));
   }
 
-  function handleRouteSelection(route: string) {
-    dispatch(setSelectedRoute(route));
-    dispatch(setDrawerOpen(false));
-  }
+  const handleRouteSelection = useCallback(
+    (route: string) => {
+      dispatch(setSelectedRoute(route));
+      dispatch(setDrawerOpen(false));
+    },
+    [dispatch]
+  );
 
-  useEffect(() => handleRouteSelection(location.pathname), [location.pathname]);
+  useEffect(
+    () => handleRouteSelection(location.pathname),
+    [handleRouteSelection, location.pathname]
+  );
 
   return (
-    <div className={classes.root}>
+    <Root>
       <SideSection
         drawerOpen={drawerOpen}
         onDrawerToggle={handleDrawerToggle}
         selectedRoute={selectedRoute}
         onRouteSelected={handleRouteSelection}
       />
-      <TopSection title={title} onDrawerToggle={handleDrawerToggle} />
-      <ContentSection>{children}</ContentSection>
-    </div>
+      <TopSection onDrawerToggle={handleDrawerToggle} />
+      <ContentSection>
+        <Outlet />
+      </ContentSection>
+    </Root>
   );
 };
 
