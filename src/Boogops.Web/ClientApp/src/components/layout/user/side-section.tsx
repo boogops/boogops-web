@@ -12,7 +12,7 @@ const classes = {
   drawerHeader: `${PREFIX}-drawerHeader`,
   title: `${PREFIX}-title`,
 };
-const DrawerStyled = styled(Drawer)(({ theme }) => {
+const Root = styled("div")(({ theme }) => {
   const drawerWidth = 240;
   return {
     [`.${classes.drawer}`]: {
@@ -58,11 +58,11 @@ const SideSection: FC<Props> = ({
       <List>
         <ListSubheader>{subHeaderTitle}</ListSubheader>
         <RouterListItem
-          to="/dashboard"
+          to="/"
           primary="Dashboard"
           icon={<Dashboard />}
-          selected={selectedRoute.includes("/dashboard")}
-          onClick={() => onRouteSelected("/dashboard")}
+          selected={selectedRoute.includes("/")}
+          onClick={() => onRouteSelected("/")}
         />
       </List>
     </>
@@ -71,30 +71,34 @@ const SideSection: FC<Props> = ({
   return (
     <>
       <Hidden smDown>
-        <DrawerStyled
-          className={classes.drawer}
-          variant="permanent"
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-          anchor="left"
-        >
-          {drawer}
-        </DrawerStyled>
+        <Root>
+          <Drawer
+            className={classes.drawer}
+            variant="permanent"
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            anchor="left"
+          >
+            {drawer}
+          </Drawer>
+        </Root>
       </Hidden>
       <Hidden smUp>
-        <DrawerStyled
-          className={classes.drawer}
-          variant="temporary"
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-          anchor="left"
-          open={drawerOpen}
-          onClose={onDrawerToggle}
-        >
-          {drawer}
-        </DrawerStyled>
+        <Root>
+          <Drawer
+            className={classes.drawer}
+            variant="temporary"
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            anchor="left"
+            open={drawerOpen}
+            onClose={onDrawerToggle}
+          >
+            {drawer}
+          </Drawer>
+        </Root>
       </Hidden>
     </>
   );

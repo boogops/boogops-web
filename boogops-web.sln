@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{B5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boogops.Web", "src\Boogops.Web\Boogops.Web.csproj", "{0A54B333-C9A0-417F-9C5A-D6FCD0477011}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1133277F-932B-4403-A91E-BC4340F5F1DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,5 +28,8 @@ Global
 		{0A54B333-C9A0-417F-9C5A-D6FCD0477011}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A54B333-C9A0-417F-9C5A-D6FCD0477011}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A54B333-C9A0-417F-9C5A-D6FCD0477011}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0A54B333-C9A0-417F-9C5A-D6FCD0477011} = {1133277F-932B-4403-A91E-BC4340F5F1DE}
 	EndGlobalSection
 EndGlobal
