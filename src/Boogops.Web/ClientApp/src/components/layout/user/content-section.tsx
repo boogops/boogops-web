@@ -28,7 +28,7 @@ const Root = styled("div")(({ theme }) => ({
   },
 }));
 
-const WhiteCircularProgress = styled(CircularProgress)(({ theme }) => ({
+const StyledCircularProgress = styled(CircularProgress)(({ theme }) => ({
   [`& .${classes.colorPrimary}`]: {
     color: theme.palette.common.white,
   },
@@ -50,7 +50,7 @@ const ContentSection: FC<Props> = ({ children }: Props) => {
   };
 
   const fabContent = loading ? (
-    <WhiteCircularProgress
+    <StyledCircularProgress
       classes={{
         colorPrimary: classes.colorPrimary,
       }}
