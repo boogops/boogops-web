@@ -7,7 +7,6 @@ import {
   Menu,
   MenuItem,
   Toolbar,
-  Typography,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { AccountCircle, Menu as MenuIcon } from "@mui/icons-material";
